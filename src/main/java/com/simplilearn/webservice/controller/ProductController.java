@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.simplilearn.webservice.entity.EProduct;
+import com.simplilearn.webservice.exception.InvalidProductException;
 import com.simplilearn.webservice.exception.ProductNotFoundException;
 import com.simplilearn.webservice.repository.ProductRepository;
 
@@ -50,7 +51,7 @@ public class ProductController {
 		
 		//1. find product
 		EProduct fetchedProduct = this.productRepository.findById(product.getId()).orElseThrow(()->{
-			throw new ProductNotFoundException("Product Not Found With Id " + product.getId());
+			throw new InvalidProductException("Invalid Product Value! " + product.getId());
 		});
 		
 		//2. set new values
@@ -71,6 +72,7 @@ public class ProductController {
 			throw new ProductNotFoundException("Product Not Found With Id " + productId);
 		});
 		
+		//2. delete product
 		this.productRepository.delete(fetchedProduct);
 		
 	}

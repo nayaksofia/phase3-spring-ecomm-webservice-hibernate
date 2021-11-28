@@ -6,5 +6,5 @@ import com.simplilearn.webservice.entity.EProduct;
 
 public interface ProductRepository extends JpaRepository<EProduct, Long> {
 
-	//For CRUD Operation
+	//It's  An Interface For CRUD Operation
 }
